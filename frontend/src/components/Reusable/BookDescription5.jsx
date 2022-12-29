@@ -43,6 +43,7 @@ function BookDescription5() {
 
         const handleClick=()=>{
                 localStorage.setItem("bookURL",img);
+                localStorage.setItem("bookTitle",title);
                 browseclick= browseclick+1;
                 setnav(browseclick);
         }

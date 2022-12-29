@@ -10,6 +10,7 @@ function Reading1() {
 
   const [numPages, setNumPages] = useState(null);
 const [pageNumber, setPageNumber] = useState(1);
+const [title,setTitle] = useState(localStorage.getItem('bookTitle'));
 
 document.addEventListener("contextmenu", (event) => {
 event.preventDefault();
@@ -34,31 +35,41 @@ changePage(1);
 }
 
 return (
-<div>
-<div>
-<div>
-<Document
-file={localStorage.getItem('bookURL')}
-onLoadSuccess={onDocumentLoadSuccess}
->
-<Page pageNumber={pageNumber} height="800"/>
-</Document>
-<div>
-<div>
-Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-</div>
-</div>
-<div>
-<button type="button" disabled={pageNumber <= 1} onClick={previousPage} className="Pre">
-Previous
-</button>
-<button type="button" disabled={pageNumber >= numPages} onClick={nextPage}>
-Next
-</button>
-</div>
+<div align="center" style={{justifyContent:'center'}}>
+  <h1>{title}</h1>
+  <div style={{display:'flex',flexDirection:'row',alignItems:'flex-start'}}>
+    <div style={{display:'flex',flexDirection:'column',alignItems:'flex-start'}}>
+          <button type="button" disabled={pageNumber <= 1} onClick={previousPage} style={{padding:'12px 24px'}}>
+            &lt;
+    </button>
+    </div>
+
+      <div align="center">
+        <Document
+        file={localStorage.getItem('bookURL')}
+        onLoadSuccess={onDocumentLoadSuccess}
+        
+        >
+        <Page pageNumber={pageNumber} height="800" />
+        </Document>
+        <div>
+            <div>
+              Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+            </div>
+        </div>
+        <div>
+ 
+
+        </div>
+      </div>
+      <div>
+      <button type="button" disabled={pageNumber >= numPages} onClick={nextPage} style={{padding:'12px 24px'}}>
+      &gt;
+      </button>
+      </div>
+      
   </div>
-    </div>
-    </div>
+</div>
   );
 }
 
