@@ -9,7 +9,7 @@ function BookDescription5() {
         let browseclick=0;
         const [nav, setnav]= useState(0);
         let navigate=useNavigate();
-        let path= "/reading2";
+        let path= "/reading1";
         // var book;
         //const [id, setId] = useState(0);
         pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -42,6 +42,7 @@ function BookDescription5() {
         },[nav])
 
         const handleClick=()=>{
+                localStorage.setItem("bookURL",img);
                 browseclick= browseclick+1;
                 setnav(browseclick);
         }
@@ -70,7 +71,7 @@ function BookDescription5() {
                         {description}
                 </div>
                 <button style={{display:'flex',flexDirection:'column', alignItems:'center',flex: 'none',order: 3,flexGrow: 0, padding:'12px 24px',width:'118px', height:'48px', background:'#EFEFFD',borderRadius:'8px', marginTop:'16px', marginLeft:'24px',fontFamily: 'Work Sans',fontSize:'16px',fontWeight:'700',lineHeight:'18.77px',letterSpacing:'4%', color:'#428CFB',border:'none'}} onClick={handleClick}>
-                        BROWSE
+                        READ
                 </button>
 
         </div>
